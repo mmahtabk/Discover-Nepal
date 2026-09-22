@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-evergreen: #2f6b4f;
+  --color-pine: #24563e;
+  --color-mint: #e9f1ec;
+  --color-mist: #69786f;
+  --color-sage: #a8c6b0;
+  --color-ink: #1f2a24;
+  --color-error: #b3403d;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+  }
+
+  a {
+    @apply transition-colors;
+  }
+}
