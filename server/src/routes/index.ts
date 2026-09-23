@@ -4,6 +4,8 @@ import destinationRoutes from './destination.routes.js';
 import authRoutes from './auth.routes.js';
 import tripRoutes from './trip.routes.js';
 import userRoutes from './user.routes.js';
+import inquiryRoutes from './inquiry.routes.js';
+import adminRoutes from './admin.routes.js';
 import { ApiResponse } from '../utils/ApiResponse.js';
 
 const router = Router();
@@ -17,5 +19,7 @@ router.use('/destinations', destinationRoutes);
 router.use('/auth', authRoutes);
 router.use('/trips', tripRoutes);
 router.use('/users', userRoutes);
+router.use('/inquiries', inquiryRoutes);
+router.use('/admin', adminRoutes);
 
 export default router;

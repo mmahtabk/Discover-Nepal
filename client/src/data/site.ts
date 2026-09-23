@@ -6,6 +6,7 @@ export const site = {
     { tKey: 'nav.destinations', href: '/destinations' },
     { tKey: 'nav.map', href: '/map' },
     { tKey: 'nav.plan', href: '/plan-trip' },
+    { tKey: 'nav.contact', href: '/contact' },
   ],
   heroImageUrl:
     'https://thumb.wikimedia.org/wikipedia/commons/thumb/3/32/Mount_Everest_and_Mount_Lhotse.jpg/1280px-Mount_Everest_and_Mount_Lhotse.jpg',

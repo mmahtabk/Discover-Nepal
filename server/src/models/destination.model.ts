@@ -14,6 +14,8 @@ const destinationSchema = new Schema(
     subtitle: { type: String, required: true },
     description: { type: String, required: true },
     bestSeason: { type: String, required: true },
+    difficulty: { type: String, enum: ['easy', 'moderate', 'hard'], default: undefined },
+    costEstimate: { type: String, default: undefined },
     elevationM: { type: Number },
     lat: { type: Number, required: true },
     lng: { type: Number, required: true },

@@ -18,8 +18,8 @@ export function haversineKm(a: LatLng, b: LatLng): number {
 }
 
 export const CATEGORY_COLORS: Record<Category, string> = {
-  trek: '#16a34a',
-  nature: '#0ea5e9',
-  culture: '#ea580c',
-  'hidden-gem': '#9333ea',
+  nature: '#2d7a52',
+  culture: '#2c6fa8',
+  trek: '#c9963a',
+  'hidden-gem': '#d05c7e',
 };

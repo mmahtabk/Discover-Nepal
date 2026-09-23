@@ -39,7 +39,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
     <div className="relative">
       <Link
         to={`/destinations/${destination.slug}`}
-        className="group block overflow-hidden rounded-2xl border border-mint bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+        className="group block overflow-hidden rounded-2xl border border-stone-2 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
       >
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
@@ -54,7 +54,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
         </div>
         <div className="p-5">
           <h3 className="font-serif text-lg font-bold text-ink">{destination.name}</h3>
-          <p className="mt-1 text-xs font-medium uppercase tracking-wide text-mist">
+          <p className="mt-1 text-xs font-medium uppercase tracking-wide text-muted">
             {provinceName(destination)} · {destination.district}
           </p>
           <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-ink/80">{destination.subtitle}</p>
@@ -68,7 +68,7 @@ export function DestinationCard({ destination }: { destination: Destination }) {
           aria-label={saved ? t('save.savedWithAccount') : t('save.saveForLater')}
           title={saved ? t('save.savedWithAccount') : t('save.saveForLater')}
           className={`absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full shadow-sm transition-colors ${
-            saved ? 'bg-evergreen text-white' : 'bg-white/90 text-ink hover:bg-white'
+            saved ? 'bg-forest text-white' : 'bg-white/90 text-ink hover:bg-white'
           }`}
         >
           <span aria-hidden="true" className="text-base leading-none">

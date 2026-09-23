@@ -43,16 +43,16 @@ export default function DestinationDetailPage() {
   if (error || !destination) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-24 text-center sm:px-6">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-evergreen">— 404</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-forest">— 404</p>
         <h1 className="mt-2 font-serif text-4xl font-bold">
           {t('destinationDetail.notFound')}
         </h1>
-        <p className="mx-auto mt-3 max-w-md text-mist">
+        <p className="mx-auto mt-3 max-w-md text-muted">
           {error ?? t('destinationDetail.notFoundMsg', { slug })}
         </p>
         <Link
           to="/destinations"
-          className="mt-6 inline-block rounded-full bg-evergreen px-6 py-3 text-sm font-semibold text-white hover:bg-pine"
+          className="mt-6 inline-block rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink hover:brightness-95"
         >
           {t('destinationDetail.allDestinations')}
         </Link>
@@ -77,7 +77,7 @@ export default function DestinationDetailPage() {
 
   return (
     <div>
-      <section className="relative flex min-h-[58vh] items-end overflow-hidden bg-pine text-white">
+      <section className="relative flex min-h-[58vh] items-end overflow-hidden bg-forest text-white">
         <img
           src={destination.imageUrl}
           alt={destination.name}
@@ -102,28 +102,28 @@ export default function DestinationDetailPage() {
 
       <section className="mx-auto max-w-6xl px-4 sm:px-6">
         <dl className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-          <div className="rounded-2xl border border-mint bg-white p-5 shadow-sm">
-            <dt className="text-xs font-semibold uppercase tracking-widest text-mist">
+          <div className="rounded-2xl border border-stone-2 bg-white p-5 shadow-sm">
+            <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
               {t('destinationDetail.bestSeason')}
             </dt>
             <dd className="mt-1 font-serif text-base font-bold text-ink">{destination.bestSeason}</dd>
           </div>
-          <div className="rounded-2xl border border-mint bg-white p-5 shadow-sm">
-            <dt className="text-xs font-semibold uppercase tracking-widest text-mist">
+          <div className="rounded-2xl border border-stone-2 bg-white p-5 shadow-sm">
+            <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
               {t('destinationDetail.elevation')}
             </dt>
             <dd className="mt-1 font-serif text-base font-bold text-ink">
               {destination.elevationM ? `${destination.elevationM.toLocaleString()} m` : '—'}
             </dd>
           </div>
-          <div className="rounded-2xl border border-mint bg-white p-5 shadow-sm">
-            <dt className="text-xs font-semibold uppercase tracking-widest text-mist">
+          <div className="rounded-2xl border border-stone-2 bg-white p-5 shadow-sm">
+            <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
               {t('destinationDetail.district')}
             </dt>
             <dd className="mt-1 font-serif text-base font-bold text-ink">{destination.district}</dd>
           </div>
-          <div className="rounded-2xl border border-mint bg-white p-5 shadow-sm">
-            <dt className="text-xs font-semibold uppercase tracking-widest text-mist">
+          <div className="rounded-2xl border border-stone-2 bg-white p-5 shadow-sm">
+            <dt className="text-xs font-semibold uppercase tracking-widest text-muted">
               {t('destinationDetail.category')}
             </dt>
             <dd className="mt-1 font-serif text-base font-bold text-ink">
@@ -135,7 +135,7 @@ export default function DestinationDetailPage() {
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <Link
             to={`/map?d=${destination.slug}`}
-            className="inline-flex items-center gap-2 rounded-full bg-evergreen px-5 py-2.5 text-sm font-semibold text-white hover:bg-pine"
+            className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:brightness-95"
           >
             {t('destinationDetail.viewOnMap')}
           </Link>
@@ -147,8 +147,8 @@ export default function DestinationDetailPage() {
               aria-pressed={saved}
               className={`inline-flex items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors ${
                 saved
-                  ? 'border-evergreen bg-evergreen text-white'
-                  : 'border-evergreen/40 text-evergreen hover:bg-evergreen hover:text-white'
+                  ? 'border-forest bg-forest text-white'
+                  : 'border-forest/40 text-forest hover:bg-forest hover:text-white'
               }`}
             >
               <span aria-hidden="true">{saved ? '♥' : '♡'}</span>
@@ -158,7 +158,7 @@ export default function DestinationDetailPage() {
           {!user && (
             <Link
               to="/plan-trip"
-              className="inline-flex items-center gap-2 rounded-full border border-evergreen/40 px-5 py-2.5 text-sm font-semibold text-evergreen hover:bg-evergreen hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-forest/40 px-5 py-2.5 text-sm font-semibold text-forest hover:bg-forest hover:text-white"
             >
               <span aria-hidden="true">♡</span>
               {t('save.logInToSave')}
@@ -168,7 +168,7 @@ export default function DestinationDetailPage() {
 
         <div className="grid gap-12 py-16 lg:grid-cols-[1fr_16rem]">
           <article>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-evergreen">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-forest">
               {t('destinationDetail.about')}
             </p>
             <p className="mt-4 max-w-prose text-lg leading-relaxed text-ink/85">
@@ -177,44 +177,44 @@ export default function DestinationDetailPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to={`/provinces/${province.slug}`}
-                className="rounded-full bg-evergreen px-6 py-3 text-sm font-semibold text-white hover:bg-pine"
+                className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink hover:brightness-95"
               >
                 {t('destinationDetail.exploreProvince', { name: province.name })}
               </Link>
               <Link
                 to="/plan-trip"
-                className="rounded-full border border-mint bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-mist"
+                className="rounded-full border border-stone-2 bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-muted"
               >
                 {t('destinationDetail.addToTrip')}
               </Link>
             </div>
           </article>
 
-          <aside className="rounded-2xl border border-mint bg-white p-6 shadow-sm">
-            <p className="text-xs font-semibold uppercase tracking-widest text-mist">
+          <aside className="rounded-2xl border border-stone-2 bg-white p-6 shadow-sm">
+            <p className="text-xs font-semibold uppercase tracking-widest text-muted">
               {t('destinationDetail.quickFacts')}
             </p>
             <ul className="mt-4 space-y-3 text-sm">
               <li>
-                <span className="text-mist">{t('destinationDetail.provinceLabel')}</span>
-                <Link to={`/provinces/${province.slug}`} className="block font-semibold text-ink hover:text-evergreen">
+                <span className="text-muted">{t('destinationDetail.provinceLabel')}</span>
+                <Link to={`/provinces/${province.slug}`} className="block font-semibold text-ink hover:text-forest">
                   {province.name}
                 </Link>
               </li>
               <li>
-                <span className="text-mist">{t('destinationDetail.districtLabel')}</span>
+                <span className="text-muted">{t('destinationDetail.districtLabel')}</span>
                 <p className="font-semibold text-ink">{destination.district}</p>
               </li>
               <li>
-                <span className="text-mist">{t('destinationDetail.categoryLabel')}</span>
+                <span className="text-muted">{t('destinationDetail.categoryLabel')}</span>
                 <TagPill category={destination.category} />
               </li>
               <li>
-                <span className="text-mist">{t('destinationDetail.bestSeason')}</span>
+                <span className="text-muted">{t('destinationDetail.bestSeason')}</span>
                 <p className="font-semibold text-ink">{destination.bestSeason}</p>
               </li>
               <li>
-                <span className="text-mist">{t('destinationDetail.elevation')}</span>
+                <span className="text-muted">{t('destinationDetail.elevation')}</span>
                 <p className="font-semibold text-ink">
                   {destination.elevationM ? `${destination.elevationM.toLocaleString()} m` : '—'}
                 </p>

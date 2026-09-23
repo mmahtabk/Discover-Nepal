@@ -1,4 +1,6 @@
 export type Category = 'trek' | 'nature' | 'culture' | 'hidden-gem';
+export type Difficulty = 'easy' | 'moderate' | 'hard';
+export type InquiryStatus = 'new' | 'contacted' | 'closed';
 
 export interface Province {
   _id: string;
@@ -26,6 +28,8 @@ export interface Destination {
   subtitle: string;
   description: string;
   bestSeason: string;
+  difficulty?: Difficulty;
+  costEstimate?: string;
   elevationM?: number;
   lat: number;
   lng: number;
@@ -36,6 +40,7 @@ export interface User {
   id: string;
   name: string;
   email: string;
+  isAdmin: boolean;
 }
 
 export interface AuthResponse {
@@ -60,4 +65,31 @@ export interface Trip {
   notes?: string;
   createdAt: string;
   updatedAt: string;
+}
+
+export interface InquiryInterest {
+  _id: string;
+  name: string;
+  slug: string;
+  provinceSlug: string;
+  imageUrl: string;
+}
+
+export interface Inquiry {
+  _id: string;
+  name: string;
+  email: string;
+  message: string;
+  destinationInterest: InquiryInterest | null;
+  status: InquiryStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AdminStats {
+  destinations: number;
+  provinces: number;
+  users: number;
+  inquiries: number;
+  inquiriesNew: number;
 }

@@ -83,7 +83,7 @@ export default function MapPage() {
         `<strong style="display:block;line-height:1.2">${escapeHtml(d.name)}</strong>` +
         `<p style="margin:2px 0 6px;font-size:12px;color:#6b7280">${escapeHtml(provinceName(d))} · ${escapeHtml(d.district)}</p>` +
         `<a href="/destinations/${encodeURIComponent(d.slug)}" ` +
-        `style="font-size:13px;font-weight:600;color:#166534;text-decoration:underline">${escapeHtml(t('map.openDetail'))} →</a>` +
+        `style="font-size:13px;font-weight:600;color:#1a5c3a;text-decoration:underline">${escapeHtml(t('map.openDetail'))} →</a>` +
         '</div>'
       );
     };
@@ -113,9 +113,9 @@ export default function MapPage() {
     if (!userLoc) return;
     L.circleMarker([userLoc.lat, userLoc.lng], {
       radius: 9,
-      color: '#166534',
+      color: '#1a5c3a',
       weight: 3,
-      fillColor: '#16a34a',
+      fillColor: '#2d7a52',
       fillOpacity: 0.9,
     })
       .bindTooltip(t('map.userMarkerTitle'), { direction: 'top' })
@@ -189,31 +189,31 @@ export default function MapPage() {
 
   return (
     <div>
-      <header className="border-b border-mint bg-white">
+      <header className="border-b border-stone-2 bg-white">
         <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-evergreen">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-forest">
             {t('map.eyebrow')}
           </p>
           <h1 className="mt-2 font-serif text-4xl font-bold text-ink">{t('map.title')}</h1>
-          <p className="mt-3 max-w-2xl leading-relaxed text-mist">{t('map.subtitle')}</p>
+          <p className="mt-3 max-w-2xl leading-relaxed text-muted">{t('map.subtitle')}</p>
         </div>
       </header>
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         {error ? (
-          <p className="text-mist">{error}</p>
+          <p className="text-muted">{error}</p>
         ) : !hasCoords ? (
-          <p className="text-mist">{t('map.noLocate')}</p>
+          <p className="text-muted">{t('map.noLocate')}</p>
         ) : (
           <div className="grid gap-8 lg:grid-cols-[1fr_20rem]">
             <div
               ref={containerRef}
-              className="relative z-0 h-[560px] w-full overflow-hidden rounded-2xl border border-mint shadow-sm"
+              className="relative z-0 h-[560px] w-full overflow-hidden rounded-2xl border border-stone-2 shadow-sm"
             />
 
             <aside className="space-y-6">
-              <section>
-                <h2 className="text-xs font-semibold uppercase tracking-widest text-mist">
+              <section className="rounded-2xl bg-sky-tint p-5">
+                <h2 className="text-[11px] font-semibold uppercase tracking-widest text-sky">
                   {t('map.legendTitle')}
                 </h2>
                 <ul className="mt-3 grid grid-cols-2 gap-2 text-sm text-ink lg:grid-cols-1">
@@ -234,24 +234,24 @@ export default function MapPage() {
                   type="button"
                   onClick={locate}
                   disabled={locating}
-                  className="inline-flex items-center gap-2 rounded-full bg-evergreen px-5 py-2.5 text-sm font-semibold text-white hover:bg-pine disabled:opacity-60"
+                  className="inline-flex items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-ink hover:brightness-95 disabled:opacity-60"
                 >
                   {locating ? t('map.locating') : t('map.locate')}
                 </button>
                 {fallbackLoc && !locating && (
-                  <p className="mt-2 text-sm leading-relaxed text-mist">
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
                     {t('map.fallbackNote')}
                   </p>
                 )}
                 {locateError && <p className="mt-2 text-sm text-error">{t('map.locateError', { message: locateError })}</p>}
                 {!userLoc && !locating && !fallbackLoc && (
-                  <p className="mt-2 text-xs leading-relaxed text-mist">{t('map.noLocate')}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-muted">{t('map.noLocate')}</p>
                 )}
               </section>
 
               {userLoc && (
                 <section>
-                  <h2 className="text-xs font-semibold uppercase tracking-widest text-mist">
+                  <h2 className="text-xs font-semibold uppercase tracking-widest text-muted">
                     {t('map.nearestTitle')}
                   </h2>
                   <ol className="mt-3 space-y-2">
@@ -260,18 +260,18 @@ export default function MapPage() {
                         <button
                           type="button"
                           onClick={() => flyToSlug(d.slug)}
-                          className="flex w-full items-center gap-3 rounded-xl border border-mint bg-white p-3 text-left shadow-sm hover:border-evergreen/40 hover:shadow"
+                          className="flex w-full items-center gap-3 rounded-xl border border-stone-2 bg-white p-3 text-left shadow-sm hover:border-forest/40 hover:shadow"
                         >
-                          <span className="grid h-6 w-6 flex-none place-items-center rounded-full bg-mint text-xs font-bold text-pine">
+                          <span className="grid h-6 w-6 flex-none place-items-center rounded-full bg-mint text-xs font-bold text-mid">
                             {i + 1}
                           </span>
                           <span className="min-w-0 flex-1">
                             <span className="block truncate text-sm font-semibold text-ink">{d.name}</span>
-                            <span className="block text-xs text-mist">
+                            <span className="block text-xs text-muted">
                               {provinceName(d)} · {d.district}
                             </span>
                           </span>
-                          <span className="flex-none text-xs font-semibold text-evergreen">
+                          <span className="flex-none text-xs font-semibold text-forest">
                             {km < 1 ? '<1' : Math.round(km)} km
                           </span>
                         </button>

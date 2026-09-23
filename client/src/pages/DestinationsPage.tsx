@@ -47,8 +47,8 @@ export default function DestinationsPage() {
               onClick={() => setTag(value)}
               className={
                 tag === value
-                  ? 'rounded-full bg-evergreen px-4 py-2 text-sm font-semibold text-white'
-                  : 'rounded-full border border-mint bg-white px-4 py-2 text-sm font-medium text-ink hover:border-mist'
+                  ? 'rounded-full bg-forest px-4 py-2 text-sm font-semibold text-white'
+                  : 'rounded-full border border-stone-2 bg-white px-4 py-2 text-sm font-medium text-ink hover:border-muted'
               }
             >
               {t(labelKey(value))}
@@ -62,7 +62,7 @@ export default function DestinationsPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder={t('destinations.searchPlaceholder')}
-            className="w-full rounded-full border border-mint bg-white px-5 py-2.5 text-sm text-ink outline-none focus:border-evergreen"
+            className="w-full rounded-full border border-stone-2 bg-white px-5 py-2.5 text-sm text-ink outline-none focus:border-forest"
           />
         </label>
       </div>
@@ -74,7 +74,7 @@ export default function DestinationsPage() {
       )}
 
       {!error && !loading && destinations.length === 0 && (
-        <p className="mt-12 text-center text-mist">{t('destinations.empty')}</p>
+        <p className="mt-12 text-center text-muted">{t('destinations.empty')}</p>
       )}
 
       <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -4,6 +4,7 @@ export interface ApiEnvelope<T> {
   success: boolean;
   data: T;
   message?: string;
+  error?: string;
 }
 
 export class ApiError extends Error {
@@ -37,7 +38,10 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const payload = (await res.json().catch(() => null)) as ApiEnvelope<T> | null;
 
   if (!res.ok) {
-    throw new ApiError(res.status, payload?.message ?? `Request failed (${res.status})`);
+    throw new ApiError(
+      res.status,
+      payload?.message ?? payload?.error ?? `Request failed (${res.status})`,
+    );
   }
   return payload?.data as T;
 }

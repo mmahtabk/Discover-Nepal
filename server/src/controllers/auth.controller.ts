@@ -17,8 +17,8 @@ function signToken(user: { _id: Types.ObjectId; email: string }): string {
   });
 }
 
-function publicUser(user: { _id: Types.ObjectId; name: string; email: string }) {
-  return { id: user._id.toString(), name: user.name, email: user.email };
+function publicUser(user: { _id: Types.ObjectId; name: string; email: string; isAdmin: boolean }) {
+  return { id: user._id.toString(), name: user.name, email: user.email, isAdmin: user.isAdmin };
 }
 
 export const register = asyncHandler(async (req, res) => {

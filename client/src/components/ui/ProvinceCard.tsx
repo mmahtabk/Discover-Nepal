@@ -5,7 +5,7 @@ export function ProvinceCard({ province }: { province: Province }) {
   return (
     <Link
       to={`/provinces/${province.slug}`}
-      className="group block overflow-hidden rounded-2xl border border-mint bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+      className="group block overflow-hidden rounded-2xl border border-stone-2 bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
@@ -20,9 +20,9 @@ export function ProvinceCard({ province }: { province: Province }) {
       </div>
       <div className="p-5">
         <h3 className="font-serif text-xl font-bold text-ink">
-          {province.name} <span className="font-sans font-normal text-mist">{province.nameNepali}</span>
+          {province.name} <span className="font-sans font-normal text-muted">{province.nameNepali}</span>
         </h3>
-        <p className="mt-1 text-sm text-mist">Capital · {province.capital}</p>
+        <p className="mt-1 text-sm text-muted">Capital · {province.capital}</p>
         <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-ink/80">{province.description}</p>
       </div>
     </Link>

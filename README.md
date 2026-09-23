@@ -40,6 +40,7 @@ npm run dev:client   # http://localhost:5173 (proxies /api -> 5001)
 | `npm run dev:client` | Vite dev client on 5173                       |
 | `npm run install:all` | install server + client deps                  |
 | `npm run seed`       | wipe + reseed provinces & destinations        |
+| `npm run promote:admin -- <email>` | make a registered user an admin      |
 | `npm run validate`   | data integrity checks (0 issues = pass)       |
 | `npm run audit`      | destination → province → image table          |
 | `npm run lint`       | lint server + client                          |
@@ -47,12 +48,23 @@ npm run dev:client   # http://localhost:5173 (proxies /api -> 5001)
 
 ## API (verify with `npm run audit`)
 
-`GET /api/health`, `/api/provinces` (sorted by `number` asc), `/api/provinces/:slug`, `/api/provinces/:slug/destinations`, `/api/destinations` (`?tag=&province=&q=`), `/api/destinations/:slug`, plus JWT-protected `/api/auth/*` and `/api/trips/*`.<!-- Details in `docs/architecture-tech-stack.md`. -->
+`GET /api/health`, `/api/provinces` (sorted by `number` asc), `/api/provinces/:slug`, `/api/provinces/:slug/destinations`, `/api/destinations` (`?tag=&province=&q=`), `/api/destinations/:slug`, plus JWT-protected `/api/auth/*` and `/api/trips/*`, plus public `POST /api/inquiries` (visitor inquiry capture).<!-- Details in `docs/architecture-tech-stack.md`. -->
+
+## Admin (`/admin`, requires `isAdmin` on the JWT)
+
+Promote your account after registering: `npm run promote:admin -- you@example.com`
+(or `mongosh discover-nepal --eval 'db.users.updateOne({email:"you@example.com"},{$set:{isAdmin:true}})'`).
+
+- **CMS** — CRUD for destinations and provinces under `/api/admin/*`; UI at `/admin/destinations`, `/admin/provinces` (province number edits warn if they'd break the 1–7 official mapping).
+- **CRM / inquiries** — visitors `POST /api/inquiries` from `/contact`; admin inbox at `/admin/inquiries` (list newest-first, status `new → contacted → closed` via `PATCH /api/admin/inquiries/:id`), and a dashboard at `/admin` with destination/province/user/inquiry counts. All admin routes return 403 for non-admins.
 
 ## Roadmap
 
 - [x] Backend: models, API, seed (140 destinations), validate/audit
 - [x] Client scaffold + homepage + browse pages
-- [ ] Province & destination detail pages
-- [ ] Trip planner (auth + itineraries)# Discover-Nepal
+- [x] Province & destination detail pages
+- [x] Trip planner (auth + itineraries)
+- [x] CMS admin panel (destinations + provinces) with role-guarded routes
+- [x] Light CRM: public inquiry form (/contact → POST /api/inquiries) + admin inbox/dashboard
+- [ ] Future: gallery, reviews, multilingual destination content# Discover-Nepal
 # Discover-Nepal

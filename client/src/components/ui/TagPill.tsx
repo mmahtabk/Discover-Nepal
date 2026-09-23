@@ -2,10 +2,10 @@ import { useTranslation } from 'react-i18next';
 import type { Category } from '../../types';
 
 const PILL_STYLES: Record<Category, string> = {
-  trek: 'bg-evergreen/15 text-evergreen',
-  nature: 'bg-evergreen/10 text-pine',
-  culture: 'bg-pine/10 text-pine',
-  'hidden-gem': 'bg-mint text-[#2e6b4f] ring-1 ring-inset ring-evergreen/25',
+  trek: 'bg-gold/15 text-gold',
+  nature: 'bg-mid/15 text-mid',
+  culture: 'bg-sky/15 text-sky',
+  'hidden-gem': 'bg-rose/15 text-rose ring-1 ring-inset ring-rose/25',
 };
 
 const LABEL_KEY: Record<Category, string> = {

@@ -6,6 +6,7 @@ export const en = {
     destinations: 'Destinations',
     map: 'Map',
     plan: 'Plan a Trip',
+    contact: 'Contact',
   },
   auth: {
     signIn: 'Sign in',
@@ -170,5 +171,22 @@ export const en = {
     saveForLater: 'Save for later',
     saved: 'Saved',
     logInToSave: 'Sign in to save destinations',
+  },
+  contact: {
+    eyebrow: '— Plan my trip',
+    title: 'Tell us where you want to go.',
+    subtitle:
+      'Ask about routes, seasons, permits or anything else — we read every inquiry and reply personally. No account needed.',
+    formTitle: 'Plan my trip (or just ask a question)',
+    destination: 'Destination of interest (optional)',
+    destinationAny: 'Any / not sure yet',
+    message: 'Your message',
+    messagePlaceholder: 'e.g. Flying into Kathmandu in October, hoping to do a 3-day trek…',
+    submit: 'Send inquiry',
+    submitting: 'Sending…',
+    success: 'Inquiry received — thank you!',
+    successMsg: "We've got your message and will get back to you at the email you provided.",
+    sendAnother: 'Send another inquiry',
+    loadingDestinations: 'Loading destinations…',
   },
 };

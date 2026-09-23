@@ -6,7 +6,7 @@ export function Footer() {
   const { t } = useTranslation();
 
   return (
-    <footer className="mt-20 bg-pine text-white">
+    <footer className="mt-20 bg-forest text-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:px-6 md:grid-cols-3">
         <div>
           <p className="font-serif text-xl font-bold">{t('brand')}</p>
@@ -19,7 +19,7 @@ export function Footer() {
           <ul className="mt-3 space-y-2 text-sm">
             {site.nav.map((item) => (
               <li key={item.href}>
-                <Link to={item.href} className="hover:text-sage">
+                <Link to={item.href} className="hover:text-gold">
                   {t(item.tKey)}
                 </Link>
               </li>

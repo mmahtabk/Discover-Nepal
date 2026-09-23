@@ -14,6 +14,7 @@
     "format": "prettier --write \"src/**/*.ts\"",
     "format:check": "prettier --check \"src/**/*.ts\"",
     "seed": "tsx src/seed/seed.ts",
+    "promote:admin": "tsx src/scripts/promoteAdmin.ts",
     "validate": "tsx src/scripts/validate.ts",
     "audit": "tsx src/scripts/audit.ts"
   },

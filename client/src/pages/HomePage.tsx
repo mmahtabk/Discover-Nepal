@@ -8,6 +8,18 @@ import { DestinationCard } from '../components/ui/DestinationCard';
 import { SectionHeader } from '../components/ui/SectionHeader';
 import { Loader } from '../components/ui/Loader';
 
+function italicAccent(text: string) {
+  return text.split(/(Nepal|नेपाल)/).map((part, i) =>
+    part === 'Nepal' || part === 'नेपाल' ? (
+      <em key={i} className="italic">
+        {part}
+      </em>
+    ) : (
+      <span key={i}>{part}</span>
+    ),
+  );
+}
+
 export default function HomePage() {
   const { t } = useTranslation();
   const { provinces, loading: loadingProvinces, error: provincesError } = useProvinces();
@@ -18,7 +30,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-pine text-white">
+      <section className="relative flex min-h-[78vh] items-center overflow-hidden bg-forest text-white">
         <img
           src={site.heroImageUrl}
           alt={t('hero.alt')}
@@ -26,17 +38,17 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-ink/10" />
         <div className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sage">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
             {t('hero.eyebrow')}
           </p>
           <h1 className="mt-4 max-w-2xl font-serif text-[clamp(2.5rem,6vw,4.5rem)] font-bold leading-tight">
-            {t('hero.title')}
+            {italicAccent(t('hero.title'))}
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">{t('tagline')}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/provinces"
-              className="rounded-full bg-evergreen px-6 py-3 text-sm font-semibold text-white hover:bg-pine"
+              className="rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink hover:brightness-95"
             >
               {t('hero.ctaProvinces')}
             </Link>

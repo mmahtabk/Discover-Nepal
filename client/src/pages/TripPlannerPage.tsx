@@ -14,7 +14,7 @@ function formatDate(iso?: string, locale = 'en-GB'): string {
 }
 
 function inputClass(base?: string) {
-  const shared = 'w-full rounded-full border border-mint bg-white px-5 py-2.5 text-sm text-ink outline-none focus:border-evergreen';
+  const shared = 'w-full rounded-full border border-stone-2 bg-white px-5 py-2.5 text-sm text-ink outline-none focus:border-forest';
   return base ? `${base} ${shared}` : shared;
 }
 
@@ -45,8 +45,8 @@ function AuthGate() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
       <div className="mx-auto max-w-md">
-        <div className="rounded-3xl border border-mint bg-white p-8 shadow-sm">
-          <div className="flex gap-2 rounded-full border border-mint bg-white p-1">
+        <div className="rounded-3xl border border-stone-2 bg-white p-8 shadow-sm">
+          <div className="flex gap-2 rounded-full border border-stone-2 bg-white p-1">
             {(['login', 'register'] as const).map((m) => (
               <button
                 key={m}
@@ -54,7 +54,7 @@ function AuthGate() {
                 onClick={() => setMode(m)}
                 className={
                   mode === m
-                    ? 'flex-1 rounded-full bg-evergreen px-4 py-2 text-sm font-semibold text-white'
+                    ? 'flex-1 rounded-full bg-forest px-4 py-2 text-sm font-semibold text-white'
                     : 'flex-1 rounded-full px-4 py-2 text-sm font-medium text-ink hover:bg-mint'
                 }
               >
@@ -66,20 +66,20 @@ function AuthGate() {
           <form onSubmit={submit} className="mt-6 space-y-4">
             {mode === 'register' && (
               <label className="block">
-                <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-mist">
+                <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-muted">
                   {t('auth.name')}
                 </span>
                 <input value={name} onChange={(e) => setName(e.target.value)} required minLength={2} placeholder={t('auth.namePlaceholder')} className={inputClass()} />
               </label>
             )}
             <label className="block">
-              <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-mist">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-muted">
                 {t('auth.email')}
               </span>
               <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder={t('auth.emailPlaceholder')} className={inputClass()} />
             </label>
             <label className="block">
-              <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-mist">
+              <span className="mb-1 block text-xs font-semibold uppercase tracking-widest text-muted">
                 {t('auth.password')}
               </span>
               <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required minLength={6} placeholder={t('auth.passwordPlaceholder')} className={inputClass()} />
@@ -92,13 +92,13 @@ function AuthGate() {
             <button
               type="submit"
               disabled={busy}
-              className="w-full rounded-full bg-evergreen px-6 py-3 text-sm font-semibold text-white hover:bg-pine disabled:opacity-60"
+              className="w-full rounded-full bg-gold px-6 py-3 text-sm font-semibold text-ink hover:brightness-95 disabled:opacity-60"
             >
               {busy ? t('auth.oneMoment') : mode === 'login' ? t('auth.signIn') : t('auth.createAccount')}
             </button>
           </form>
         </div>
-        <p className="mt-6 text-center text-sm text-mist">{t('auth.gateSubtitle')}</p>
+        <p className="mt-6 text-center text-sm text-muted">{t('auth.gateSubtitle')}</p>
       </div>
     </section>
   );
@@ -129,7 +129,7 @@ function NewTripForm({ onCreate }: { onCreate: (title: string, start?: string, e
   };
 
   return (
-    <form onSubmit={submit} className="rounded-3xl border border-mint bg-white p-6 shadow-sm">
+    <form onSubmit={submit} className="rounded-3xl border border-stone-2 bg-white p-6 shadow-sm">
       <p className="text-sm font-bold text-ink">{t('planTrip.newTrip')}</p>
       <div className="mt-4 grid gap-3 sm:grid-cols-[1fr_auto_auto_auto]">
         <input value={title} onChange={(e) => setTitle(e.target.value)} required placeholder={t('planTrip.tripTitlePlaceholder')} className={inputClass()} />
@@ -138,7 +138,7 @@ function NewTripForm({ onCreate }: { onCreate: (title: string, start?: string, e
         <button
           type="submit"
           disabled={busy}
-          className="rounded-full bg-evergreen px-6 py-2.5 text-sm font-semibold text-white hover:brightness-90 disabled:opacity-60"
+          className="rounded-full bg-gold px-6 py-2.5 text-sm font-semibold text-ink hover:brightness-95 disabled:opacity-60"
         >
           {busy ? t('planTrip.creating') : t('planTrip.createTrip')}
         </button>
@@ -175,24 +175,24 @@ function TripDetail({
   const candidates = search.destinations.filter((d) => !addedIds.has(d._id)).slice(0, 6);
 
   return (
-    <div className="border-t border-mint px-5 py-5">
+    <div className="border-t border-stone-2 px-5 py-5">
       {trip.destinationIds.length === 0 ? (
-        <p className="mb-4 text-sm text-mist">{t('planTrip.noDestYet')}</p>
+        <p className="mb-4 text-sm text-muted">{t('planTrip.noDestYet')}</p>
       ) : (
         <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {trip.destinationIds.map((d) => (
-            <li key={d._id} className="flex items-center gap-3 rounded-xl border border-mint bg-white p-2">
+            <li key={d._id} className="flex items-center gap-3 rounded-xl border border-stone-2 bg-white p-2">
               <img src={d.imageUrl} alt={d.name} loading="lazy" className="h-14 w-14 shrink-0 rounded-lg object-cover" />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-semibold text-ink">{d.name}</p>
-                <p className="truncate text-xs text-mist">{d.slug}</p>
+                <p className="truncate text-xs text-muted">{d.slug}</p>
               </div>
               <button
                 type="button"
                 aria-label={t('planTrip.remove', { name: d.name })}
                 disabled={saving}
                 onClick={() => onRemove(trip, d._id)}
-                className="shrink-0 text-sm text-mist hover:text-evergreen disabled:opacity-50"
+                className="shrink-0 text-sm text-muted hover:text-forest disabled:opacity-50"
               >
                 ✕
               </button>
@@ -210,11 +210,11 @@ function TripDetail({
           className={inputClass()}
         />
         {search.loading ? (
-          <p className="mt-3 text-sm text-mist">{t('planTrip.searching')}</p>
+          <p className="mt-3 text-sm text-muted">{t('planTrip.searching')}</p>
         ) : candidates.length > 0 ? (
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {candidates.map((d) => (
-              <li key={d._id} className="flex items-center gap-3 rounded-xl border border-mint bg-white p-2">
+              <li key={d._id} className="flex items-center gap-3 rounded-xl border border-stone-2 bg-white p-2">
                 <img src={d.imageUrl} alt="" loading="lazy" className="h-10 w-10 shrink-0 rounded-lg object-cover" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-ink">{d.name}</p>
@@ -223,7 +223,7 @@ function TripDetail({
                   type="button"
                   disabled={saving}
                   onClick={() => onAdd(trip, d)}
-                  className="shrink-0 rounded-full bg-evergreen px-3 py-1 text-xs font-semibold text-white hover:brightness-90 disabled:opacity-50"
+                  className="shrink-0 rounded-full bg-gold px-3 py-1 text-xs font-semibold text-ink hover:brightness-95 disabled:opacity-50"
                 >
                   {t('planTrip.add')}
                 </button>
@@ -232,7 +232,7 @@ function TripDetail({
           </ul>
         ) : (
           q.trim() !== '' && (
-            <p className="mt-3 text-sm text-mist">{t('planTrip.nothingNew', { q })}</p>
+            <p className="mt-3 text-sm text-muted">{t('planTrip.nothingNew', { q })}</p>
           )
         )}
       </div>
@@ -313,7 +313,7 @@ function Planner() {
           title={t('planTrip.namaste', { name: user?.name.split(' ')[0] })}
           subtitle={t('planTrip.subtitle2')}
         />
-        <p className="text-sm text-mist">
+        <p className="text-sm text-muted">
           {trips.length === 1
             ? t('planTrip.savedTrip', { count: trips.length })
             : t('planTrip.savedTrips', { count: trips.length })}
@@ -330,17 +330,17 @@ function Planner() {
         <NewTripForm onCreate={createTrip} />
 
         {trips.length === 0 && !listError ? (
-          <div className="rounded-2xl border border-dashed border-mint bg-white p-10 text-center">
+          <div className="rounded-2xl border border-dashed border-stone-2 bg-white p-10 text-center">
             <p className="font-serif text-xl font-bold text-ink">{t('planTrip.noTripsYet')}</p>
-            <p className="mt-2 text-sm text-mist">{t('planTrip.createFirst')}</p>
+            <p className="mt-2 text-sm text-muted">{t('planTrip.createFirst')}</p>
           </div>
         ) : (
           trips.map((trip) => (
-            <div key={trip._id} className="rounded-2xl border border-mint bg-white shadow-sm">
+            <div key={trip._id} className="rounded-2xl border border-stone-2 bg-white shadow-sm">
               <div className="flex flex-wrap items-center justify-between gap-4 p-5">
                 <div>
                   <h3 className="font-serif text-lg font-bold text-ink">{trip.title}</h3>
-                  <p className="mt-0.5 text-sm text-mist">
+                  <p className="mt-0.5 text-sm text-muted">
                     {trip.startDate || trip.endDate
                       ? `${formatDate(trip.startDate, i18nDateLocale)} → ${formatDate(trip.endDate, i18nDateLocale)}`
                       : t('planTrip.noDatesYet')}{' '}
@@ -354,14 +354,14 @@ function Planner() {
                   <button
                     type="button"
                     onClick={() => setExpandedId(expandedId === trip._id ? null : trip._id)}
-                    className="rounded-full bg-evergreen px-4 py-2 text-sm font-semibold text-white hover:bg-pine"
+                    className="rounded-full bg-gold px-4 py-2 text-sm font-semibold text-ink hover:brightness-95"
                   >
                     {expandedId === trip._id ? t('planTrip.collapse') : t('planTrip.planDetails')}
                   </button>
                   <button
                     type="button"
                     onClick={() => void deleteTrip(trip._id)}
-                    className="rounded-full border border-mint px-4 py-2 text-sm text-mist hover:border-evergreen hover:text-evergreen"
+                    className="rounded-full border border-stone-2 px-4 py-2 text-sm text-muted hover:border-forest hover:text-forest"
                   >
                     {t('planTrip.delete')}
                   </button>
@@ -389,9 +389,9 @@ export default function TripPlannerPage() {
 
   return (
     <div>
-      <header className="relative overflow-hidden bg-pine text-white">
+      <header className="relative overflow-hidden bg-forest text-white">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-sage">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
             {t('planTrip.eyebrow')}
           </p>
           <h1 className="mt-2 max-w-xl font-serif text-4xl font-bold sm:text-5xl">
